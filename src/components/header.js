@@ -1,5 +1,6 @@
 import React from 'react'
 import menu from './images/menu1.png'
+import{HeadB} from './pages/homee'
 
 
 export const Header = () => {
@@ -12,6 +13,7 @@ export const Header = () => {
                    
                 
                 </div>
+                <HeadB/>
     </div>
   )
 }
