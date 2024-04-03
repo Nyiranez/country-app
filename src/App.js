@@ -1,9 +1,9 @@
 import { Footer } from './components/footer';
 import { Header } from './components/header';
-
 import { Home } from './home';
 import { About } from './about';
 import { Contact } from './contact';
+import { Error } from './components/pages/error';
 import {Routes,Route} from 'react-router-dom'
 import './App.css';
 
@@ -15,8 +15,11 @@ function App() {
        <Routes>
       
        <Route path="/" element={<Home />} />
+       <Route path="/home" element={<Home />} />
        <Route path="/about" element={<About />} />
        <Route path="/contact" element={<Contact />} />
+       <Route path="*" element={<Error />} />
+
        </Routes>
       </div>
      
