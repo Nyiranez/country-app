@@ -7,15 +7,15 @@ export function Home(props) {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
 
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(5);
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  // const [loading, setLoading] = useState(true);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [recordsPerPage] = useState(5);
+  // const indexOfLastRecord = currentPage * recordsPerPage;
+  // const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
-  const currentRecords = countries.slice(indexOfFirstRecord,
-    indexOfLastRecord);
-  const nPages = Math.ceil(countries.length / recordsPerPage)
+  // const currentRecords = countries.slice(indexOfFirstRecord,
+  //   indexOfLastRecord);
+  // const nPages = Math.ceil(countries.length / recordsPerPage)
 
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export function Home(props) {
     if (region === "" || region === undefined)
       setFilteredCountries(countries);
     else{
-      let result = countries.filter(country => country.region === region);
+      let result = countries.filter((country) => country.region.includes (region));
       setFilteredCountries(result);
     }
   }
@@ -38,7 +38,7 @@ export function Home(props) {
 
   const fetchCountries = async () => {
 
-    const response = await fetch("https://restcountries.com/v3.1//all", {
+    const response = await fetch("https://restcountries.com/v3.1/all", {
       headers: {
         'content-type': 'application/json'
       },
@@ -46,7 +46,7 @@ export function Home(props) {
     });
 
     const countriesData = await response.json();
-    setLoading(false)
+    
 
     setCountries(countriesData);
     setFilteredCountries(countriesData);
